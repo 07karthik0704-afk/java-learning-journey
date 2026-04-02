@@ -95,4 +95,106 @@ Each object can store different data but shares the same structure and behavior 
 
 ---
 
+## 🧠 Different Names You Should Know (Java Terminology)
+
+
+## Common Terminologies in Java
+
+### Variables
+- Variable  
+- Field  
+- Attribute  
+- Data Member  
+
+---
+
+### Methods
+- Method  
+- Function (general term, not used officially in Java)  
+- Member Function  
+
+---
+
+### Class Members
+- Members  
+- Properties  
+- Fields + Methods together  
+
+---
+
+### Object
+- Object  
+- Instance  
+
+---
+
+### Class
+- Class  
+- Blueprint  
+- Template  
+
+---
+
+### Parameters & Arguments
+- Parameters → Formal Parameters  
+- Arguments → Actual Parameters  
+
+---
+
+### Data Types
+- Primitive Types  
+- Non-Primitive Types  
+- Reference Types  
+
+---
+
+### Looping
+- Iterative Statements  
+- Looping Constructs  
+
+---
+
+### Conditional Statements
+- Decision-Making Statements  
+- Selection Statements  
+- Control Statements  
+
+---
+
+### Operators
+- Operators  
+- Symbols  
+
+---
+
+### Operands
+- Operands  
+- Values  
+
+---
+
+## My Understanding
+Many concepts in Java have multiple names.  
+Knowing these helps in better understanding and improves communication in interviews and real-world discussions.
+
+---
+
+## 💥 Real Talk (important)
+
+👉 In **college / YouTube** → they use mixed terms
+👉 In **interviews** → they may switch names
+
+If you know all these = you won’t get confused 😎
+
+---
+
+## ⚡ Must-remember ones (top priority)
+
+* Variable = Field = Attribute
+* Method = Function (general term)
+* Object = Instance
+* Parameter ≠ Argument
+
+---
+
 
