@@ -15,7 +15,7 @@ It includes notes, examples, and practice programs for each topic.
 * [06 - Access Modifiers, Setters & Getters](./06-accessModifier-setter-getter.md)
 * [07 - Constructors & Encapsulation](./07-constructor-encapsulation.md)
 * [08 - Inheritance & Polymorphism](./08-inheritance-polymorph.md)
-* [09 - Types of Inheritance](./09-typeOfInheritance.md)
+* [09 - Types of Inheritance](./09-typeOfInhertiance.md)
 
 ---
 
