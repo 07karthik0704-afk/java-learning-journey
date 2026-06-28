@@ -264,5 +264,102 @@ Child
 ```
 
 > **A child object can always be treated as its parent, but a parent object cannot automatically be treated as its child.**
+----
+
+# Why Runtime Polymorphism?
+
+## Without Runtime Polymorphism
+
+```java
+Dog dog = new Dog();
+Cat cat = new Cat();
+Lion lion = new Lion();
+
+dog.sound();
+cat.sound();
+lion.sound();
+```
+
+### Problem
+
+* Need separate reference variables.
+* Code increases as new child classes are added.
+* Less reusable.
+
+---
+
+## With Runtime Polymorphism
+
+```java
+Animal obj;
+
+obj = new Dog();
+obj.sound();
+
+obj = new Cat();
+obj.sound();
+
+obj = new Lion();
+obj.sound();
+```
+
+### Output
+
+```text
+Bow Bow...
+Meow...
+Roar...
+```
+
+### Benefits
+
+* One parent reference.
+* Different child objects.
+* Same method call (`sound()`).
+* Different behavior at runtime.
+
+---
+
+## Adding a New Child
+
+```java
+class Elephant extends Animal {
+
+    @Override
+    void sound() {
+        System.out.println("Trumpet...");
+    }
+}
+```
+
+No need to change the existing design.
+
+Simply write:
+
+```java
+obj = new Elephant();
+obj.sound();
+```
+
+Output
+
+```text
+Trumpet...
+```
+
+---
+
+## Why Use Runtime Polymorphism?
+
+* ✔ One parent reference can refer to many child objects.
+* ✔ Same method call, different behavior.
+* ✔ Flexible code.
+* ✔ Reusable code.
+* ✔ Easy to maintain and extend.
+
+---
+
+##
+
 
 
