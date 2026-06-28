@@ -142,3 +142,127 @@ It allows the same method name to perform different tasks based on parameters or
 | Child Class  | Child / Derived / Sub Class |
 
 
+---
+
+# Polymorphism
+
+```text
+Polymorphism
+│
+├── Compile-Time Polymorphism
+│      └── Method Overloading
+│
+└── Runtime Polymorphism
+       ├── Method Overriding
+       └── Parent Reference = Child Object
+           (Used to achieve Runtime Polymorphism)
+```
+
+##
+
+
+---
+
+# Runtime Polymorphism - Parent Reference & Child Object
+
+## Rule
+
+```text
+Parent Reference = Child Object   ✅
+
+Child Reference = Parent Object   ❌
+```
+
+## Example
+
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog");
+    }
+}
+```
+
+### Valid
+
+```java
+Animal obj = new Dog();
+obj.sound();
+```
+
+**Output**
+
+```text
+Dog
+```
+
+**Reason**
+
+* `Dog` **is an** `Animal`.
+* The actual object is `Dog`.
+* Java executes the overridden method of the actual object at runtime.
+
+---
+
+### Invalid
+
+```java
+Dog obj = new Animal();
+```
+
+**Reason**
+
+* Every `Dog` is an `Animal`.
+* But every `Animal` is **not** a `Dog`.
+* An `Animal` could be a `Dog`, `Cat`, or `Lion`.
+* Therefore, Java does not allow assigning a parent object to a child reference.
+
+---
+
+## Easy Example
+
+```text
+Vehicle
+   ▲
+   │
+ Car
+```
+
+✅ Valid
+
+```java
+Vehicle v = new Car();
+```
+
+❌ Invalid
+
+```java
+Car c = new Vehicle();
+```
+
+Because every **Car is a Vehicle**, but every **Vehicle is not a Car**.
+
+---
+
+## Memory Trick
+
+```text
+General
+   ▲
+Parent
+
+Specific
+   ▲
+Child
+```
+
+> **A child object can always be treated as its parent, but a parent object cannot automatically be treated as its child.**
+
+
