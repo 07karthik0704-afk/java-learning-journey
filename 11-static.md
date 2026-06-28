@@ -1,92 +1,209 @@
-## Static Keyword in Java
+# Static Keyword
+
+## Definition
+
+> **`static`**** means the member belongs to the class, not to individual objects.**
 
 ---
 
-## Introduction
+## 1. Static Variable
 
-- `static` keyword is used for memory management  
-- It belongs to the class rather than the object  
+```java
+class Student {
+
+    static String college = "ABC College";
+}
+```
+
+### Use
+
+* Shared by all objects.
+* Only one copy exists.
+* Used for common data.
+
+**Example:** College name, Company name, PI value.
 
 ---
 
-## Static Method
+## 2. Static Method
 
-### Key Points
+```java
+class Calculator {
 
-- Can be called using class name (no object needed)  
-- Saves memory (no need to create object)  
-- Can access only static data directly  
+    static void display() {
+        System.out.println("Hello");
+    }
+}
+
+Calculator.display();
+```
+
+### Use
+
+* Can be called without creating an object.
+* Used for utility/helper methods.
+
+**Example:** `Math.max()`, `Math.sqrt()`
 
 ---
 
-### Example:
+## 3. Static Block
+
 ```java
 class Demo {
 
-    static void show() {
-        System.out.println("Static Method");
+    static {
+        System.out.println("Static Block");
     }
 
     public static void main(String[] args) {
-        Demo.show(); // called using class name
+        System.out.println("Main Method");
     }
 }
-````
+```
+
+**Output**
+
+```text
+Static Block
+Main Method
+```
+
+### Use
+
+* Executes once when the class is loaded.
+* Used to initialize static variables.
 
 ---
 
-## Why main() is static
+# 4 Static Nested Class
+
+## Example
 
 ```java
-public static void main(String[] args)
-```
+class Outer {
 
-* JVM calls `main()` without creating object
-* So it must be `static` to be accessed directly using class name
+    static int x = 100;
 
----
+    static class Inner {
 
-## Static Variable (Static Field)
+        void display() {
+            System.out.println("Inside Inner Class");
+            System.out.println("x = " + x);
+        }
+    }
 
-* Shared among all objects
-* Only one copy is created in memory
+    public static void main(String[] args) {
 
----
+        // No need to create an Outer object
+        Outer.Inner obj = new Outer.Inner();
 
-### Example:
-
-```java id="st2k1"
-class Demo {
-
-    static int count = 0;
-
-    Demo() {
-        count++;
-        System.out.println(count);
+        obj.display();
     }
 }
 ```
 
----
+### Output
 
-### Explanation
-
-* All objects share the same `count` variable
-* Change in one object affects all
-
----
-
-## Important Points
-
-* Static members belong to class, not objects
-* Access using: `ClassName.member`
-* Static variables are shared across objects
+```text
+Inside Inner Class
+x = 100
+```
 
 ---
 
-## My Understanding
+## Why Static Nested Class?
 
-The `static` keyword is used to create class-level variables and methods.
-It allows access without object creation and helps in saving memory by sharing data among all objects.
+Normally, an inner class needs an object of the outer class.
+
+```java
+class Outer {
+
+    class Inner {
+
+    }
+}
+```
+
+Usage:
+
+```java
+Outer outer = new Outer();
+Outer.Inner obj = outer.new Inner();
+```
 
 ---
+
+But if the inner class is `static`:
+
+```java
+class Outer {
+
+    static class Inner {
+
+    }
+}
+```
+
+Usage:
+
+```java
+Outer.Inner obj = new Outer.Inner();
+```
+
+No `Outer` object is required.
+
+---
+
+## When is it Used?
+
+* Helper classes.
+* Utility classes related only to the outer class.
+* Organizing code without creating an outer object.
+
+### Example
+
+```java
+class Database {
+
+    static class Connection {
+
+        void connect() {
+            System.out.println("Database Connected");
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Database.Connection db = new Database.Connection();
+        db.connect();
+    }
+}
+```
+
+**Output**
+
+```text
+Database Connected
+```
+
+---
+
+## Memory Trick
+
+```text
+Normal Inner Class
+------------------
+Needs Outer Object
+
+Outer outer = new Outer();
+Outer.Inner obj = outer.new Inner();
+
+----------------------------
+
+Static Nested Class
+-------------------
+No Outer Object Needed
+
+Outer.Inner obj = new Outer.Inner();
+```
